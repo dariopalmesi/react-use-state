@@ -16,18 +16,31 @@ function App() {
 
     setActive(newActive)
 
+    if (active == newActive) {
+      setActive(null)
+    }
+
   }
 
   return (
     <>
-      <div className="langauges">
-        {languages.map((language, index) => {
-          <div className="language" key={language.id}>
-            <h2 onClick={handleClick} data-index={index}>{language.title}</h2>
-            <div className={active == index ? 'content' : 'hide'}>{language.description}</div>
-          </div>
-        })}
+      <div className="container">
+        <div className="langauges">
+          {languages.map((language, index) => (
+            <div className="language" key={language.id}>
+              <h2 onClick={handleClick} data-index={index}>{language.title}</h2>
+              <div className={active == index ? 'content' : 'hide'}>
+                <h2>{language.title}</h2>
+                <p>
+                  {language.description}
+                </p>
+
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
     </>
   )
 }
